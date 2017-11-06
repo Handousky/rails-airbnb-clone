@@ -1,0 +1,17 @@
+<div class="container text-center meals">
+  <h1>All Our meals</h1>
+  <div class="row">
+    <% @meals.each do |meal| %>
+      <div class="col-xs-6 col-sm-4 col-md-3">
+        <div class="meal-card">
+          <%= link_to '', meal_path(meal), class: 'card-link' %>
+          <div class="meal-content">
+            <div class="meal-name">
+              <h4><%= meal.name %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
