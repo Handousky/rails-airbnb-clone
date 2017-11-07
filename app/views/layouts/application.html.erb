@@ -11,7 +11,10 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <%= yield(:sidebar) %>
+    <div class="container" style="padding-top: 70px;">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
