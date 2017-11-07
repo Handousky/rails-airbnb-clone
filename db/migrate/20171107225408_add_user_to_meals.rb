@@ -1,0 +1,5 @@
+class AddUserToMeals < ActiveRecord::Migration[5.0]
+  def change
+    add_reference :meals, :user, foreign_key: true
+  end
+end

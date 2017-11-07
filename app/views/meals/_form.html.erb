@@ -1,0 +1,9 @@
+<%= simple_form_for(@meal) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, label: "Meal's name", placeholder: "Hector's Veggie Pizza" %>
+  <%= f.input :price, label: "Price", placeholder: "$10" %>
+  <%= f.input :address, label: "Pick-up address", placeholder: "5333 avenue Casgrain, Montréal" %>
+  <%= f.input :category, label: "Meal's category", placeholder: "Food-Porn, Veggie, Gluten-free..." %>
+  <%= f.input :description, label: "Ingredients", placeholder: "A lot of tomatos, and I really don't know what kind of veggie stuff you can put in a Pizza" %>
+  <%= f.button :submit, "Add a meal", class: "btn btn-primary" %>
+<% end %>
