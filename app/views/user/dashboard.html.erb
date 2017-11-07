@@ -1,9 +1,15 @@
+<style>
+  .container {
+    margin-left: 200px; /* Same as the width of the tab */
+    width: calc(100% - 200px);
+  }
+</style>
+
 <% content_for(:sidebar) do %>
   <div id="mySidenav" class="tab">
     <span class="tablinks" onclick="openCity(event, 'History')" id="defaultOpen">History</span>
     <span class="tablinks" onclick="openCity(event, 'Dishes')">Your dishes</span>
     <span class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</span>
-    <span class="tablinks" onclick="openCity(event, 'Settings')">Settings</span>
   </div>
 <% end %>
 
@@ -17,34 +23,4 @@
 
 <div class="dash-view tabcontent" id="Reviews">
   <h1>This the reviews you wrote and reviews written for you!</h1>
-</div>
-
-<div class="dash-view tabcontent" id="Settings">
-  <h2>Edit <%= :user.to_s.humanize %></h2>
-
-<%= simple_form_for(current_user, url: registration_path(:user), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name, required: true, autofocus: true %>
-    <%= f.input :last_name, required: true %>
-    <%= f.input :phone_number, required: true %>
-    <%= f.input :email, required: true %>
-
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(:user), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-
 </div>
