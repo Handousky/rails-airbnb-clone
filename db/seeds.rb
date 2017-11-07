@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+  # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -12,3 +12,8 @@ puts "Seeding meals into db"
   Meal.create(name: i, price: 20 + i, address: "#{i}#{i+1}#{i+2} Whatever St", category: "Italian", description: "Good food")
 }
 puts "Meals seeded"
+
+10.times { |i|
+  Review.create(comment: "i", rating: 5, meal_id: i + 1)
+}
+puts "Reviews seeded"

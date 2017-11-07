@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
-
   before_validation :strip_whitespace
+  has_many :meals
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
