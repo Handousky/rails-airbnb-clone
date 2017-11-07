@@ -1,9 +1,49 @@
 <% content_for(:sidebar) do %>
-  <div id="mySidenav" class="sidenav">
-    <a href="#">History</a>
-    <a href="#">Your dishes</a>
-    <a href="#">Reviews</a>
-    <a href="#">Settings</a>
+  <div id="mySidenav" class="tab">
+    <span class="tablinks" onclick="openCity(event, 'History')" id="defaultOpen">History</span>
+    <span class="tablinks" onclick="openCity(event, 'Dishes')">Your dishes</span>
+    <span class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</span>
+    <span class="tablinks" onclick="openCity(event, 'Settings')">Settings</span>
   </div>
 <% end %>
 
+<div class="dash-view tabcontent" id="History">
+  <h1>This is the history of the meals you ordered!</h1>
+</div>
+
+<div class="dash-view tabcontent" id="Dishes">
+  <h1>This are the dishes that you made!</h1>
+</div>
+
+<div class="dash-view tabcontent" id="Reviews">
+  <h1>This the reviews you wrote and reviews written for you!</h1>
+</div>
+
+<div class="dash-view tabcontent" id="Settings">
+  <h1>Edit your account</h1>
+</div>
+
+<script>
+  function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  document.getElementById("defaultOpen").click();
+</script>

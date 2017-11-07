@@ -1,10 +1,10 @@
 /* Page content */
 .container {
-  margin-left: 200px; /* Same as the width of the sidenav */
+  margin-left: 200px; /* Same as the width of the tab */
 }
 
 /* The side navigation menu */
-.sidenav {
+.tab {
   height: calc(100% - 70px);
   width: 200px;
   position: fixed;
@@ -17,22 +17,23 @@
 }
 
 /* The navigation menu links */
-.sidenav a {
+.tab span {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s
+    transition: 0.3s;
+    cursor: pointer;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus{
+.tab span:hover, .offcanvas span:focus{
     color: #f1f1f1;
 }
 
 /* Position and style the close button (top right corner) */
-.sidenav .closebtn {
+.tab .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -46,8 +47,8 @@
     padding: 20px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+/* On smaller screens, where height is less than 450px, change the style of the tab (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .tab {padding-top: 15px;}
+    .tab span {font-size: 18px;}
 }
