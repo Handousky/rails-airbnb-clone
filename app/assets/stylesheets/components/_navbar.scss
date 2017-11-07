@@ -13,9 +13,27 @@
   justify-content: space-between;
 }
 
+.navbar-wagon-brand {
+  color : #DFBFE5;
+  font-size: 36px;
+}
+
+.navbar-wagon-brand:link {
+  -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+  -webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+  text-decoration: none;
+}
+
+.navbar-wagon-brand:visited {
+  -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+  -webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+}
+
 /* Logo */
-.navbar-wagon-brand img {
+img {
   height: 50px;
+  align-items: left;
+
 }
 
 /* User Avatar */

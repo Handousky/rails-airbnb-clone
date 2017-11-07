@@ -1,28 +1,48 @@
 .banner {
-  background-image: linear-gradient(-90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%), url('https://www.jimmysonbroadway.com/wp-content/uploads/2013/07/banner-specialty-drinks.jpg');
   color: white;
-  padding-right: 15%;
   text-align: center;
+  height: calc(100vh - 70px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  height: calc(90vh - 60px);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 85%;
+  background-size: cover !important;
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
-
+  justify-content: center;
 }
 .banner h1 {
-  font-size: 50px;
+  font-size: 75px;
   font-weight: bold;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 1px rgba(1, 0, 1, 0.5);
+  color: #DFBFE5;
 }
 .banner p {
   font-size: 25px;
   font-weight: lighter;
-  color: rgb(255, 255, 255);
-  opacity: 0.6;
+  font-style: italic;
+  color: #DFBFE5;
+  opacity: 0.8;
   margin-bottom: 30px;
+}
+
+.btn-banner {
+  border-radius: 3px;
+  background-color: white;
+  color: black;
+  border-color: #E94CD8;
+}
+
+label {
+  height: 42px;
+  margin-bottom: 2px;
+  margin-right: 15px;
+}
+
+.form-banner {
+  background-color: white;
+  padding: 8px;
+  border: 0.5px solid #E94CD8;
+}
+
+.form-inline .form-group .address-input {
+  width: 375px;
+  margin-right: 4px;
 }
