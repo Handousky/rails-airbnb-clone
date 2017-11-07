@@ -1,0 +1,26 @@
+<style>
+  .container {
+    margin-left: 200px; /* Same as the width of the tab */
+    width: calc(100% - 200px);
+  }
+</style>
+
+<% content_for(:sidebar) do %>
+  <div id="mySidenav" class="tab">
+    <span class="tablinks" onclick="openCity(event, 'History')" id="defaultOpen">History</span>
+    <span class="tablinks" onclick="openCity(event, 'Dishes')">Your dishes</span>
+    <span class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</span>
+  </div>
+<% end %>
+
+<div class="dash-view tabcontent" id="History">
+  <h1>This is the history of the meals you ordered!</h1>
+</div>
+
+<div class="dash-view tabcontent" id="Dishes">
+  <h1>This are the dishes that you made!</h1>
+</div>
+
+<div class="dash-view tabcontent" id="Reviews">
+  <h1>This the reviews you wrote and reviews written for you!</h1>
+</div>
