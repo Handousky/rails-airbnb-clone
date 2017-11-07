@@ -22,7 +22,7 @@
 
 
       <ul class="list-unstyled">
-        <% @meal.reviews.each do |dose| %>
+        <% @meal.reviews.each do |review| %>
           <li><%= review.comment %></li>
           <li><%= review.rating %></li>
         <% end %>
