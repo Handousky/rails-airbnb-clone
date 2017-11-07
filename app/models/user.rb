@@ -40,11 +40,10 @@ class User < ApplicationRecord
     return user
   end
 
+  private
 
-end
+  def strip_whitespace
+    self.email = email.strip unless email.nil?
+  end
 
-private
-
-def strip_whitespace
-  self.email = email.strip unless email.nil?
 end
