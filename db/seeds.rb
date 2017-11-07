@@ -7,13 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Seeding Meals
-puts "Seeding meals into db"
-10.times { |i|
-  Meal.create(name: i, price: 20 + i, address: "#{i}#{i+1}#{i+2} Whatever St", category: "Italian", description: "Good food")
-}
-puts "Meals seeded"
 
-10.times { |i|
-  Review.create(comment: "i", rating: 5, meal_id: i + 1)
-}
-puts "Reviews seeded"
+Meal.destroy_all
+
+# puts "Seeding meals into db"
+# 10.times { |i|
+#   Meal.create(name: i, price: 20 + i, address: "#{i}#{i+1}#{i+2} Whatever St", category: "Italian", description: "Good food")
+# }
+# puts "Meals seeded"
+
+# 10.times { |i|
+#   Review.create(comment: "i", rating: 5, meal_id: i + 1)
+# }
+# puts "Reviews seeded"

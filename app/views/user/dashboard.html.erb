@@ -8,7 +8,7 @@
 <% content_for(:sidebar) do %>
   <div id="mySidenav" class="tab">
     <span class="tablinks" onclick="openCity(event, 'History')" id="defaultOpen">History</span>
-    <span class="tablinks" onclick="openCity(event, 'Dishes')">Your dishes</span>
+    <span class="tablinks" onclick="openCity(event, 'Meals')">Your meals</span>
     <span class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</span>
   </div>
 <% end %>
@@ -19,8 +19,34 @@
     <h1>This is the history of the meals you ordered!</h1>
   </div>
 
-  <div class="dash-view tabcontent" id="Dishes">
-    <h1>This are the dishes that you made!</h1>
+  <div class="dash-view tabcontent" id="Meals">
+    <h1>This are the meals that you made!</h1>
+    <div class="text-center meals">
+      <div class="row">
+        <% current_user.meals.each do |meal| %>
+          <div class="col-xs-6 col-sm-4 col-md-3">
+            <div class="meal-card">
+              <%= link_to '', meal_path(meal), class: 'card-link' %>
+              <div class="meal-content">
+                <div class="meal-name">
+                  <h4><%= meal.name %></h4>
+                </div>
+                <div class="meal-price">
+                  <h4><%= meal.price %></h4>
+                </div>
+                <div class="meal-address">
+                  <h4><%= meal.address %></h4>
+                </div>
+                <div class="meal-category">
+                  <h4><%= meal.category %></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <p><%= link_to "Create a meal!", new_meal_path, class: 'btn btn-primary btn-lg' %></p>
   </div>
 
   <div class="dash-view tabcontent" id="Reviews">
