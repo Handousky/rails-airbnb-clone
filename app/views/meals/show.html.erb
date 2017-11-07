@@ -1,7 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1><%= @meal.name %></h1>
+      <div class="meal-name">
+        <h1><%= @meal.name %></h1>
+      </div>
+      <div class="meal-price"></div>
+        <h3><%= @meal.price %></h3>
+      </div>
+
+      <div class="meal-address"></div>
+        <p><%= @meal.address %></p>
+      </div>
+
+      <div class="meal-category"></div>
+        <p><%= @meal.category %></p>
+      </div>
+
+      <div class="meal-description"></div>
+        <p><%= @meal.description %></p>
+      </div>
+
 
       <ul class="list-unstyled">
         <% @meal.reviews.each do |dose| %>
@@ -9,8 +27,6 @@
           <li><%= review.rating %></li>
         <% end %>
       </ul>
-
-      <%= cl_image_tag @meal.photo.url(:large) %>
 
       <h2 class="text-center">Add a review</h2>
 
