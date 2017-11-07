@@ -10,9 +10,9 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
     <%= yield(:sidebar) %>
     <div style="padding-top: 70px;">
+      <%= render 'shared/flashes' %>
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application' %>
