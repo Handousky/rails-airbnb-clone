@@ -6,17 +6,18 @@
         <div class="meal-card">
           <%= link_to '', meal_path(meal), class: 'card-link' %>
           <div class="meal-content">
-            <div class="meal-name">
-              <h4><%= meal.name %></h4>
+            <div class="meal-head">
+              <h4><%= meal.name %> ($<%= meal.price %>)</h4>
             </div>
-            <div class="meal-price">
-              <h4><%= meal.price %></h4>
+            <div class="meal-info">
+              <p><%= meal.category %></p>
+              <p>
+                <%meal.avg_rating.times { %><i class='fa fa-star'></i> <% } %>
+                <%(5 - meal.avg_rating).times { %><i class='fa fa-star-o'></i> <% } %>
+              </p>
             </div>
-            <div class="meal-address">
-              <h4><%= meal.address %></h4>
-            </div>
-            <div class="meal-category">
-              <h4><%= meal.category %></h4>
+            <div class="meal-img">
+              <p>this is where the photo will appear</p>
             </div>
           </div>
         </div>

@@ -2,10 +2,12 @@
   margin: 10px;
   padding: 20px;
   position: relative;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
   &:hover{
-    box-shadow: 0 0 15px rgba(255,255,255,0.8);
-    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
     .meal-name h4{
       color: $red;
     }
@@ -19,10 +21,10 @@
     height: 100%;
   }
 
-  .delete-x{
-    position: absolute;
-    top: 3px;
-    right: 10px;
+  .meal-info{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
   }
 
   .meal-content{
@@ -38,9 +40,11 @@
       margin-bottom: 5px;
       // border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-    .meal-name h4{
+    .meal-head h4{
       margin-top: 0;
     }
   }
+
+
 
 }
