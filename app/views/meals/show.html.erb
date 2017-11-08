@@ -9,20 +9,20 @@
         <div class="col-xs-7">
           <div class="meal-info">
             <div class="meal-info">
-              <h2><%= @meal.name %> ($<%= @meal.price %>)</h2>
+              <h2><%= @meal.name %></h2>
               <p>Category: <%= @meal.category %></p>
-              <p>Get it at <%= @meal.address %></p>
+              <p>Address: <%= @meal.address %></p>
             </div>
           </div>
         </div>
         <div class="col-xs-5 btn-order">
+          <h4>Price: $<%= @meal.price %></h4>
           <button class="btn btn-success btn-lg">Order now!</button>
         </div>
       </div>
       <div class="meal-description text-justify">
         <h3>Description</h3>
-        <!-- <p><%= @meal.description %></p> -->
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus neque dolorem blanditiis culpa ullam quis, autem tenetur dicta quam amet quae hic et error minima possimus voluptates quia suscipit animi?</p>
+        <p><%= @meal.description %></p>
       </div>
     </div>
   </div>

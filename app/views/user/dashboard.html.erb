@@ -29,24 +29,40 @@
               <%= link_to '', meal_path(meal), class: 'card-link' %>
               <div class="meal-content">
                 <div class="meal-name">
-                  <h4><%= meal.name %></h4>
-                </div>
-                <div class="meal-price">
-                  <h4><%= meal.price %></h4>
-                </div>
-                <div class="meal-address">
-                  <h4><%= meal.address %></h4>
+                  <h4><%= meal.name %> ($<%= meal.price %>)</h4>
                 </div>
                 <div class="meal-category">
-                  <h4><%= meal.category %></h4>
+                  <h5><%= meal.category %></h5>
+                </div>
+                <div class="meal-img">
+                  <p>this is where the photo will appear</p>
+                </div>
+                <div class="meal-control">
+                  <%= link_to "Edit", edit_meal_path(current_user), class: 'btn btn-warning btn-sm' %>
+                  <%= link_to "Delete", meal_path(meal), method: :delete, class: 'btn btn-danger btn-sm' %>
                 </div>
               </div>
             </div>
           </div>
         <% end %>
+        <div class="col-xs-6 col-sm-4 col-md-3">
+          <div class="meal-card">
+            <%= link_to '', new_meal_path, class: 'card-link' %>
+            <div class="meal-content">
+              <div class="meal-name">
+                <h4>New meal</h4>
+              </div>
+              <div class="meal-category">
+                <h6>Click here</h6>
+              </div>
+              <div class="meal-img">
+                <i class="fa fa-plus-circle" style="font-size: 70px;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <p><%= link_to "Create a meal!", new_meal_path, class: 'btn btn-primary btn-lg' %></p>
   </div>
 
   <div class="dash-view tabcontent" id="Reviews">
