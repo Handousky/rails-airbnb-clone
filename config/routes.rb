@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
   resources :meals do
     resources :reviews, only: [:new, :create]
-    namespace :admin do
-      resources :meals, only: [:edit, :update, :destroy]
-    end
   end
   get '/dashboard', to: 'user#dashboard'
 

@@ -42,7 +42,10 @@ class MealsController < ApplicationController
 
   private
   def set_meal
-    @meal = current_user.meals.find(params[:id])
+    @meal = Meal.find(params[:id])
+    if current_user != @meal.user
+      redirect_to root_path
+    end
   end
 
   def meal_params
