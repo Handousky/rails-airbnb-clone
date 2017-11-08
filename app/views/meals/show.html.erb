@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <h1>This is where the photo will be</h1>
+      <% if @product.photo? %>
+        <%= cl_image_tag @product.photo.path, width: 200, height: 300, crop: :fill %>
+      <% end %>
       <h2>And here we'll put info about the user</h2>
     </div>
     <div class="col-xs-12 col-sm-6">

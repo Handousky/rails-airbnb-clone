@@ -1,6 +1,7 @@
 <%= simple_form_for(@meal) do |f| %>
   <%= f.error_notification %>
   <%= f.input :name, label: "Meal's name", placeholder: "Hector's Veggie Pizza" %>
+  <%= f.input :photo, as: :attachinary %>
   <%= f.input :price, label: "Price", placeholder: "$10" %>
   <%= f.input :address, label: "Pick-up address", placeholder: "5333 avenue Casgrain, Montréal" %>
   <%= f.input :category, label: "Meal's category", placeholder: "Food-Porn, Veggie, Gluten-free..." %>

@@ -17,7 +17,7 @@
               </p>
             </div>
             <div class="meal-img">
-              <p>this is where the photo will appear</p>
+              <%= cl_image_path @meal.photo.path, crop: :fit %>
             </div>
           </div>
         </div>
