@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <% if @product.photo? %>
-        <%= cl_image_tag @product.photo.path, width: 200, height: 300, crop: :fill %>
+      <% if @meal.photo? %>
+        <%= cl_image_tag @meal.photo.path, width: 550, height: 500, crop: :fit %>
       <% end %>
-      <h2>And here we'll put info about the user</h2>
+      <p>And here we'll put info about the user</p>
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="row">
