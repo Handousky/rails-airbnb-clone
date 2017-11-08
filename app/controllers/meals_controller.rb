@@ -16,8 +16,18 @@ class MealsController < ApplicationController
   end
 
   def index
-    @meals = Meal.all
-    @meals = Meal.where.not(latitude: nil, longitude: nil)
+
+   if params[:search].present?
+
+      @meals = Meal.near(params[:search], 50)
+
+      # if params address
+      # geocode that address
+      # find meals near geocoded address
+      # else do
+    else
+      @meals = Meal.where.not(latitude: nil, longitude: nil)
+    end
 
     @hash = Gmaps4rails.build_markers(@meals) do |meal, marker|
       marker.lat meal.latitude
