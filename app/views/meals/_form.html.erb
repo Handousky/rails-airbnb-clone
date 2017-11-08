@@ -8,3 +8,7 @@
   <%= f.input :description, label: "Ingredients", placeholder: "A lot of tomatos, and I really don't know what kind of veggie stuff you can put in a Pizza" %>
   <%= f.button :submit, "Add a meal", class: "btn btn-primary" %>
 <% end %>
+
+<%= content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU"></script>
+<% end %>

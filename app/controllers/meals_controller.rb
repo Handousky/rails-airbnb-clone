@@ -17,9 +17,17 @@ class MealsController < ApplicationController
 
   def index
     @meals = Meal.all
+    @meals = Meal.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@meals) do |meal, marker|
+      marker.lat meal.latitude
+      marker.lng meal.longitude
+      # marker.infowindow render_to_string(partial: "/meals/map_box", locals: { meal: meal })
+    end
   end
 
   def show
+    @meal_coordinates = { lat: @meal.latitude, lng: @meal.longitude }
     @review = Review.new
   end
 
