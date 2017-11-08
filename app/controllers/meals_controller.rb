@@ -16,10 +16,9 @@ class MealsController < ApplicationController
   end
 
   def index
-
    if params[:search].present?
 
-      @meals = Meal.near(params[:search], 50)
+      @meals = Meal.near(params[:search], 10)
 
       # if params address
       # geocode that address
