@@ -16,8 +16,8 @@
                 <%(5 - meal.avg_rating).times { %><i class='fa fa-star-o'></i> <% } %>
               </p>
             </div>
-            <div class="meal-img">
-              <p>this is where the photo will appear</p>
+            <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path meal.photo.path, height: 150, width: 205, crop: :scale %>')">
             </div>
           </div>
         </div>
