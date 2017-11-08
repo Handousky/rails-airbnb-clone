@@ -1,5 +1,5 @@
 class MealsController < ApplicationController
-  before_action :set_meal, only: [:show, :edit, :update, :destroy]
+  before_action :set_meal, only: [:edit, :update, :destroy]
 
   def new
     @meal = Meal.new
@@ -27,6 +27,7 @@ class MealsController < ApplicationController
   end
 
   def show
+    @meal = Meal.find(params[:id])
     @meal_coordinates = { lat: @meal.latitude, lng: @meal.longitude }
     @review = Review.new
   end
@@ -44,15 +45,18 @@ class MealsController < ApplicationController
 
   def destroy
     @meal.destroy
-    redirect_to root
+    redirect_to dashboard_path
   end
 
   private
   def set_meal
     @meal = Meal.find(params[:id])
+    if current_user != @meal.user
+      redirect_to root_path
+    end
   end
 
   def meal_params
-    params.require(:meal).permit(:name, :price, :address, :category, :description)
+    params.require(:meal).permit(:name, :price, :address, :category, :description, :photo)
   end
 end
