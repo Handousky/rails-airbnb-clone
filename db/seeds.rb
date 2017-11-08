@@ -12,7 +12,7 @@ Meal.destroy_all
 
 puts "Seeding meals into db"
 10.times { |i|
-  Meal.create(name: i, price: 20 + i, address: "#{i}#{i+1}#{i+2} Whatever St", category: "Italian", description: "Good food")
+  Meal.create(name: i, price: 20 + i, address: "#{i}#{i+1}#{i+2} Avenue Casgrain", category: "Italian", description: "Good food")
 }
 puts "Meals seeded"
 
