@@ -17,7 +17,7 @@
               </p>
             </div>
             <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path meal.photo.path, height: 150, width: 205, crop: :scale %>')">
+         url('<%= cl_image_path meal.photo.path, height: 150, width: 205, crop: :scale if meal.photo? %>')">
             </div>
           </div>
         </div>
