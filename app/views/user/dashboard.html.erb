@@ -16,7 +16,32 @@
 <div class="container">
 
   <div class="dash-view tabcontent" id="History">
-    <h1 class="text-center">This is the history of the meals you ordered!</h1>
+    <h2 class="text-center">This is the history of the meals you ordered!</h2>
+    <% current_user.orders.each do |order| %>
+      <div class="order">
+        <%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>
+        <div class='order-body'>
+          <h3><%= order.meal.name %> ($<%= order.meal.price %>)</h3>
+          <p>Chef: <%= order.meal.user.first_name %></p>
+        </div>
+        <ul class="list-inline product-controls hidden-sm hidden-xs">
+          <li><i class="fa fa-time"> <%= order.status %></i></li>
+        </ul>
+      </div>
+    <% end %>
+    <h2 class="text-center">These are the meals people are ordering from you!</h2>
+    <% Order.where(meal: current_user.meals).each do |order| %>
+      <div class="order">
+        <%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>
+        <div class='order-body'>
+          <h3><%= order.meal.name %> ($<%= order.meal.price %>)</h3>
+          <p>Ordered by: <%= order.user.first_name %></p>
+        </div>
+        <ul class="list-inline product-controls hidden-sm hidden-xs">
+          <li><i class="fa fa-time"> <%= order.status %></i></li>
+        </ul>
+      </div>
+    <% end %>
   </div>
 
   <div class="dash-view tabcontent" id="Meals">
@@ -35,7 +60,7 @@
             <div class="meal-img">
               <p>this is where the photo will appear</p>
             </div>
-            <div class="meal-control", style="z-index: 1">
+            <div class="meal-control", style="z-index: 1;">
               <%= link_to "Edit", edit_meal_path(meal), class: 'btn btn-warning btn-sm' %>
               <%= link_to "Delete", meal_path(meal), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
             </div>

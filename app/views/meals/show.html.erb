@@ -22,7 +22,7 @@
         </div>
         <div class="col-xs-5 btn-order">
           <h4>Price: $<%= @meal.price %></h4>
-          <button class="btn btn-success btn-lg">Order now!</button>
+          <%= link_to 'Order now', meal_orders_path(@meal), method: :post, class: 'btn btn-success btn-lg' %>
         </div>
       </div>
       <div class="meal-description text-justify">

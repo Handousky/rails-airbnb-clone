@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :meals do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:create]
+    resources :orders, only: [:create]
   end
   get '/dashboard', to: 'user#dashboard'
 
