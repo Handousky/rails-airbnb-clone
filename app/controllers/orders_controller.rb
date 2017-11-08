@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def create
-    @order = Order.new(user: current_user, meal: Meal.find(params[:id]))
+    @order = Order.new(user: current_user, meal: Meal.find(params[:meal_id]))
     @order.status = "Pending"
     if @order.save
       redirect_to dashboard_path
@@ -13,4 +13,5 @@ class OrdersController < ApplicationController
   end
 
   def update
+  end
 end
