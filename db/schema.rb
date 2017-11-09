@@ -88,10 +88,8 @@ ActiveRecord::Schema.define(version: 20171109210609) do
     t.string   "facebook_picture_url"
     t.string   "token"
     t.datetime "token_expiry"
-    t.integer  "review_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["review_id"], name: "index_users_on_review_id", using: :btree
   end
 
   add_foreign_key "meals", "users"
@@ -99,5 +97,4 @@ ActiveRecord::Schema.define(version: 20171109210609) do
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "meals"
   add_foreign_key "reviews", "users"
-  add_foreign_key "users", "reviews"
 end
