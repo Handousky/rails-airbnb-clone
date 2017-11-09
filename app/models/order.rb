@@ -4,4 +4,6 @@ class Order < ApplicationRecord
 
   validates :user, presence: true
   validates :meal, presence: true
+  validates :time, presence: true
+  validates :portions, presence: true
 end

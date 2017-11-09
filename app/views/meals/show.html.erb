@@ -1,5 +1,6 @@
-<% @meal = @meal.nil? ? Meal.find(id) : @meal %>
-<% @review   = @review.nil? ? Review.new : @review %>
+<% @meal   = @meal.nil? ? Meal.find(id) : @meal %>
+<% @review = @review.nil? ? Review.new : @review %>
+<% @order  = @order.nil? ? Order.new : @order %>
 
 <div class="container">
   <div class="row">
@@ -21,10 +22,14 @@
           </div>
         </div>
         <% if current_user != @meal.user %>
-          <div class="col-xs-5 btn-order">
+          <div class="col-xs-5 order-form">
             <h4>Price: $<%= @meal.price %></h4>
             <% if user_signed_in? %>
-              <%= link_to 'Order now', meal_orders_path(@meal), method: :post, class: 'btn btn-success btn-lg' %>
+              <%= simple_form_for([@meal, @order]) do |f| %>
+                <%= f.input :time, labe: "Pickup time", as: :select, collection: (24.times.map { |i| "#{i}:00" }) %>
+                <%= f.input :portions, input_html: { min: 1, max: 10, step: 1, value: 1} %>
+                <%= f.submit "Order now!", class: "btn btn-success btn-lg" %>
+              <% end %>
             <% else %>
               <%= link_to 'Login to Order',  new_user_session_path, class: 'btn btn-primary btn-lg' %>
             <% end %>
