@@ -8,7 +8,7 @@
             <div class="meal-content">
 
               <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-           url('<%= cl_image_path meal.photo.path, height: 150, width: 205, crop: :scale if meal.photo? %>')">
+           url('<%= cl_image_path meal.photo.path if meal.photo? %>')">
               </div>
 
               <div class="meal-head">
