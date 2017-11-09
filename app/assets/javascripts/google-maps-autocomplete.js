@@ -1,13 +1,12 @@
 function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
+  console.log(place);
 
   var mealAddress = document.getElementById('meal_address');
   mealAddress.blur();
-  mealAddress.value = components.address;
-
-  document.getElementById('meal_zip_code').value = components.zip_code;
-  document.getElementById('meal_city').value = components.city;
+  mealAddress.value = place.formatted_address;
+  console.log(mealAddress);
 
   if (components.country_code) {
     var selector = '#meal_country option[value="' + components.country_code + '"]';
