@@ -22,11 +22,13 @@
   -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
   -webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
   text-decoration: none;
+  color : #DFBFE5;
 }
 
 .navbar-wagon-brand:visited {
   -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
   -webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+  color : #DFBFE5;
 }
 
 /* Logo */
@@ -62,8 +64,8 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
   text-decoration: none;
+  color : #DFBFE5;
 }
 
 /* Dropdown menu */
