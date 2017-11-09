@@ -12,10 +12,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def edit
-    @order = Order.find(params[:id])
-  end
-
   def accept
     @order = Order.find(params[:id])
     @order.update(status: "Accepted")
