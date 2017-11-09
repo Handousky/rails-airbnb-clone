@@ -34,7 +34,7 @@
 
     .meal-img{
       background-color: grey;
-      height: 150px;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -53,12 +53,35 @@
       justify-content: space-between;
       font-size: 14px;
       padding: 0px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.5);
+      margin-bottom: 8px;
     }
 
-    .meal-price{
-      font-family: bold;
-      padding: 0px 20px;
+    .meal-price p {
+      margin: 0px;
+    }
+
+    .meal-bottom-elements{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0px;
+      border-top: 1px solid rgba(0,0,0,0.2);
+
+      .meal-price{
+        font-size: 16px;
+        font-weight: 700;
+        padding: 0px 20px;
+      }
+
+      .meal-order{
+        padding: 0px 20px;
+
+        .btn{
+          padding: 0px 8px;
+          font-size: 16px;
+
+        }
+      }
     }
   }
 

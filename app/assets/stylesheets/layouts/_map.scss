@@ -4,8 +4,9 @@
 }
 
 #map {
-  flex: 0 0 450px;
+  flex: 0 0 650px;
   height: 100vh;
   position: sticky !important;
-  top: 0 !important;
+  top: 80px !important;
+  overflow: hidden;
 }
