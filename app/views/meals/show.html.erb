@@ -23,7 +23,11 @@
         <% if current_user != @meal.user %>
           <div class="col-xs-5 btn-order">
             <h4>Price: $<%= @meal.price %></h4>
-            <%= link_to 'Order now', meal_orders_path(@meal), method: :post, class: 'btn btn-success btn-lg' %>
+            <% if user_signed_in? %>
+              <%= link_to 'Order now', meal_orders_path(@meal), method: :post, class: 'btn btn-success btn-lg' %>
+            <% else %>
+              <%= link_to 'Login to Order',  new_user_session_path, class: 'btn btn-primary btn-lg' %>
+            <% end %>
           </div>
         <% end %>
       </div>
