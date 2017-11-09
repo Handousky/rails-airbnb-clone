@@ -1,10 +1,14 @@
 <h2 class="text-center">This is the history of the meals you ordered!</h2>
-<% current_user.orders.each do |order| %>
+<% current_user.orders.reverse.each do |order| %>
   <div class="order">
-    <%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>
+    <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>')">
+    </div>
     <div class='order-body'>
       <h3><%= order.meal.name %> ($<%= order.meal.price %>)</h3>
       <p>Chef: <%= order.meal.user.first_name %></p>
+      <h6><i class="fa fa-clock-o"> <%= order.time %></i></h6>
+      <h6><%= order.portions %> Portion(s)</h6>
     </div>
     <ul class="list-inline product-controls hidden-sm hidden-xs">
       <li><i class="fa fa-time"> <%= order.status %></i></li>
@@ -12,15 +16,22 @@
   </div>
 <% end %>
 <h2 class="text-center">These are the meals people are ordering from you!</h2>
-<% Order.where(meal: current_user.meals).each do |order| %>
+<% Order.where(meal: current_user.meals).reverse.each do |order| %>
   <div class="order">
-    <%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>
+    <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>')">
+    </div>
     <div class='order-body'>
       <h3><%= order.meal.name %> ($<%= order.meal.price %>)</h3>
       <p>Ordered by: <%= order.user.first_name %></p>
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <li><i class="fa fa-time"> <%= order.status %></i></li>
+    <div class="product-controls hidden-sm hidden-xs">
+      <h5 class="text-center"><%= order.status %></h5>
+      <ul class="list-inline">
+      <% if order.status == 'Pending' %>
+        <li><%= link_to "Accept", '#', class: 'btn btn-success btn-sm' %></li>
+        <li><%= link_to "Decline", '#', class: 'btn btn-danger btn-sm' %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>

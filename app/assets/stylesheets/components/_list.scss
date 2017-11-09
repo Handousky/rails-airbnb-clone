@@ -6,10 +6,12 @@
   transition: all 0.15s ease;
   background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
 }
 
 /* Body design */
 .order-body {
+  padding-left: 20px;
   flex: 1 1 auto;
 }
 .order-body h3 {
@@ -24,10 +26,16 @@
 }
 
 /* order image */
-.order-image {
-  border-radius: 10px;
-  margin-right: 20px;
-  width: 175px;
+.order-img {
+  background-color: grey;
+  width: 205px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  // border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 /* Upvote design */
