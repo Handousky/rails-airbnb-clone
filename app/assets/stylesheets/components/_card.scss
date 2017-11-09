@@ -47,11 +47,19 @@
       margin-bottom: 10px;
       // border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-    .meal-head h4{
+    .meal-head {
+      height: 52px;
       margin-top: 0;
       text-align: left;
       padding: 0px 20px;
-      margin-bottom: 2px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      h5 {
+        margin: 0;
+        width: 100%;
+        overflow: hidden;
+      }
     }
 
     .meal-info{
