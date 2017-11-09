@@ -12,12 +12,16 @@ class OrdersController < ApplicationController
     end
   end
 
+  def edit
+    @order = Order.find(params[:id])
+  end
+
   def update
     @order = Order.find(params[:id])
     if @order.update(status_params)
       redirect_to dashboard_path
     else
-      render dashboard_path
+      render :edit
     end
   end
 

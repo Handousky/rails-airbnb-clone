@@ -1,4 +1,5 @@
 <h2 class="text-center">This is the history of the meals you ordered!</h2>
+
 <% current_user.orders.reverse.each do |order| %>
   <div class="order">
     <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -15,9 +16,12 @@
     </ul>
   </div>
 <% end %>
+
 <h2 class="text-center">These are the meals people are ordering from you!</h2>
+
 <% Order.where(meal: current_user.meals).reverse.each do |order| %>
   <div class="order">
+    <%= link_to '', edit_order_path(order), class: 'list-link' %>
     <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>')">
     </div>

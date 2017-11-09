@@ -1,0 +1,20 @@
+<div class="container text-center">
+  <h2>Order Confirmation</h2>
+  <h3> <%= @order.user.full_name %> asks for <%= @order.portions %> portion(s) of your <%= @order.meal.name %></h3>
+  <p>He proposes to pickup the meal at <%= @order.time %> </p>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-2 col-sm-offset-4">
+      <%= simple_form_for @order do |f| %>
+        <%= f.input :status, as: :hidden, disabled: :disabled_state, input_html: { value: "Accepted", disabled: true } %>
+        <%= f.button :submit, "Accept", class: 'btn btn-success btn-lg' %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <%= simple_form_for @order do |f| %>
+        <%= f.input :status, as: :hidden, disabled: :disabled_state, input_html: { value: "Rejected", disabled: true } %>
+        <%= f.submit "Reject", class: 'btn btn-danger btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+</div>

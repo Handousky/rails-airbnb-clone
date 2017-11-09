@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 
   before_validation :strip_whitespace
-  has_many :meals
-  has_many :orders
-  has_many :reviews
+  has_many :meals, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -20,6 +20,11 @@ class User < ApplicationRecord
   validates :password,
   presence: true,
   format: { with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{6,}\z/ }
+
+  def full_name
+    return "#{self.first_name} #{self.last_name}"
+  end
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
