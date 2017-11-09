@@ -7,7 +7,7 @@
       <% if @meal.photo? %>
         <%= cl_image_tag @meal.photo.path, width: 550, height: 500, crop: :fit %>
       <% end %>
-      <p>And here we'll put info about the user</p>
+      <p><b>Made by</b> <%= @meal.user.first_name + ' ' + @meal.user.last_name %></p>
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="row">
@@ -48,26 +48,33 @@
             <%review.rating.times { %><i class='fa fa-star'></i> <% } %>
             <%(5 - review.rating).times { %><i class='fa fa-star-o'></i> <% } %>
           </p>
+          <p><i><%= review.user.first_name %></i></p>
         </div>
       <% end %>
     </div>
-    <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-      <h4 class="text-center">Add a review</h4>
+    <% if user_signed_in? %>
+      <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+        <h4 class="text-center">Add a review</h4>
 
-      <% if @review.errors.any? %>
-        <ul>
-          <% @review.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+        <% if @review.errors.any? %>
+          <ul>
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
 
-      <%= simple_form_for([@meal, @review]) do |f| %>
-        <%= f.input :comment %>
-        <%= f.input :rating, collection: 0..5 %>
-        <%= f.submit class: "btn btn-primary" %>
-      <% end %>
+        <%= simple_form_for([@meal, @review]) do |f| %>
+          <%= f.input :comment %>
+          <%= f.input :rating, collection: 0..5 %>
+          <%= f.submit class: "btn btn-primary" %>
+        <% end %>
 
-    </div>
+      </div>
+    <% else %>
+      <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+        <h4 class="text-center">You need to log in to write a review</h4>
+      </div>
+    <% end %>
   </div>
 </div>

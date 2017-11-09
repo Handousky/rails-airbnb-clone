@@ -3,6 +3,7 @@ class User < ApplicationRecord
   before_validation :strip_whitespace
   has_many :meals
   has_many :orders
+  has_many :reviews
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
