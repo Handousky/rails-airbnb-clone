@@ -1,4 +1,6 @@
+
 <h2 class="text-center">This is the history of the meals you ordered!</h2>
+
 <% current_user.orders.reverse.each do |order| %>
   <div class="order">
     <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -10,12 +12,15 @@
       <h6><i class="fa fa-clock-o"> <%= order.time %></i></h6>
       <h6><%= order.portions %> Portion(s)</h6>
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <li><i class="fa fa-time"> <%= order.status %></i></li>
-    </ul>
+    <h5 class="text-center"><%= order.status %></h5>
   </div>
 <% end %>
+
+
+
+
 <h2 class="text-center">These are the meals people are ordering from you!</h2>
+
 <% Order.where(meal: current_user.meals).reverse.each do |order| %>
   <div class="order">
     <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -26,12 +31,22 @@
       <p>Ordered by: <%= order.user.first_name %></p>
     </div>
     <div class="product-controls hidden-sm hidden-xs">
-      <h5 class="text-center"><%= order.status %></h5>
-      <ul class="list-inline">
       <% if order.status == 'Pending' %>
-        <li><%= link_to "Accept", '#', class: 'btn btn-success btn-sm' %></li>
-        <li><%= link_to "Decline", '#', class: 'btn btn-danger btn-sm' %></li>
+        <h5 class="text-center"><%= order.status %></h5>
+        <ul class="list-inline">
+          <li>
+            <%= simple_form_for order do |f| %>
+              <%= f.input :status, as: :hidden, disabled: :disabled_state, input_html: { value: "Accepted", disabled: true } %>
+              <%= f.button :submit, "Accept", class: 'btn btn-success btn-sm' %>
+            <% end %>
+          </li>
+          <li>
+            <%= simple_form_for order do |f| %>
+              <%= f.input :status, as: :hidden, disabled: :disabled_state, input_html: { value: "Rejected", disabled: true } %>
+              <%= f.button :submit, "Decline", class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          </li>
+        </ul>
       <% end %>
-    </ul>
   </div>
 <% end %>

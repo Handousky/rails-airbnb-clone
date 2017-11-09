@@ -7,20 +7,27 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to dashboard_path
     else
-      redirect_to meal_path(@order.meal)
+      render meal_path(@order.meal)
     end
   end
 
-  def edit
-  end
-
   def update
+    @order = Order.find(params[:id])
+    if @order.update(status_params)
+      redirect_to dashboard_path
+    else
+      render dashboard_path
+    end
   end
 
   private
 
   def order_params
     params.require(:order).permit(:time, :portions)
+  end
+
+  def status_params
+    params.require(:order).permit(:status)
   end
 
 end
