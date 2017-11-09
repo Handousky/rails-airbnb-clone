@@ -57,8 +57,8 @@
             <div class="meal-category">
               <h5><%= meal.category %></h5>
             </div>
-            <div class="meal-img">
-              <p>this is where the photo will appear</p>
+            <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path meal.photo.path, height: 150, width: 250, crop: :scale if meal.photo? %>')">
             </div>
             <div class="meal-control", style="z-index: 1;">
               <%= link_to "Edit", edit_meal_path(meal), class: 'btn btn-warning btn-sm' %>

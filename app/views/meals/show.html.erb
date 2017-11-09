@@ -20,10 +20,12 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-5 btn-order">
-          <h4>Price: $<%= @meal.price %></h4>
-          <%= link_to 'Order now', meal_orders_path(@meal), method: :post, class: 'btn btn-success btn-lg' %>
-        </div>
+        <% if current_user != @meal.user %>
+          <div class="col-xs-5 btn-order">
+            <h4>Price: $<%= @meal.price %></h4>
+            <%= link_to 'Order now', meal_orders_path(@meal), method: :post, class: 'btn btn-success btn-lg' %>
+          </div>
+        <% end %>
       </div>
       <div class="meal-description text-justify">
         <h3>Description</h3>
