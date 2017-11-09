@@ -1,6 +1,6 @@
 <h2 class="text-center">This is the history of the meals you ordered!</h2>
 
-<% current_user.orders.reverse.each do |order| %>
+<% current_user.orders.reverse.first(5).each do |order| %>
   <div class="order">
     <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>')">
@@ -11,17 +11,22 @@
       <h6><i class="fa fa-clock-o"> <%= order.time %></i></h6>
       <h6><%= order.portions %> Portion(s)</h6>
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <li><i class="fa fa-time"> <%= order.status %></i></li>
-    </ul>
+    <div class="order-controls hidden-sm hidden-xs">
+      <% if order.status == "Accepted" %>
+        <h5 class="text-center green"><%= order.status %></h5>
+      <% elsif order.status == "Rejected" %>
+        <h5 class="text-center red"><%= order.status %></h5>
+      <% else %>
+        <h5 class="text-center"><%= order.status %></h5>
+      <% end %>
+    </div>
   </div>
 <% end %>
 
 <h2 class="text-center">These are the meals people are ordering from you!</h2>
 
-<% Order.where(meal: current_user.meals).reverse.each do |order| %>
+<% Order.where(meal: current_user.meals).reverse.first(5).each do |order| %>
   <div class="order">
-    <%= link_to '', edit_order_path(order), class: 'list-link' %>
     <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>')">
     </div>
@@ -29,8 +34,18 @@
       <h3><%= order.meal.name %> ($<%= order.meal.price %>)</h3>
       <p>Ordered by: <%= order.user.first_name %></p>
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <li><i class="fa fa-time"> <%= order.status %></i></li>
-    </ul>
+    <div class="order-controls hidden-sm hidden-xs">
+      <% if order.status == "Accepted" %>
+        <h5 class="text-center green"><%= order.status %></h5>
+      <% elsif order.status == "Rejected" %>
+        <h5 class="text-center red"><%= order.status %></h5>
+      <% else %>
+        <h5 class="text-center"><%= order.status %></h5>
+        <ul class="list-inline">
+          <li><%= link_to "Accept", "accept/order/#{order.id}", class: 'btn btn-success btn-sm' %></li>
+          <li><%= link_to "Reject", "reject/order/#{order.id}", class: 'btn btn-danger btn-sm' %></li>
+        </ul>
+      <% end %>
+    </div>
   </div>
 <% end %>

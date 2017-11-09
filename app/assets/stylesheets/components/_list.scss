@@ -73,24 +73,12 @@
 
 /* Controls design */
 .order-controls {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 0px;
-}
-.order-controls a {
-  padding: 0 20px;
-  font-size: 17px;
-  color: #E6E6E6;
-}
-.order-controls a:hover {
-  color: #D3473C !important
-}
-.order-controls-hidden a {
-  color: transparent;
-  font-size: 15px;
-  transition: all 0.15s ease;
-  border-color: transparent;
+  .green {
+      color: $green;
+    }
+  .red {
+    color: $red;
+  }
 }
 
 /* Hover effects */

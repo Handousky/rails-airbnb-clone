@@ -16,13 +16,16 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def update
+  def accept
     @order = Order.find(params[:id])
-    if @order.update(status_params)
-      redirect_to dashboard_path
-    else
-      render :edit
-    end
+    @order.update(status: "Accepted")
+    redirect_to dashboard_path
+  end
+
+  def reject
+    @order = Order.find(params[:id])
+    @order.update(status: "Rejected")
+    redirect_to dashboard_path
   end
 
   private
@@ -30,9 +33,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:time, :portions)
   end
-
-  def status_params
-    params.require(:order).permit(:status)
-  end
-
 end
