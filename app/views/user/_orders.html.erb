@@ -1,0 +1,26 @@
+<h2 class="text-center">This is the history of the meals you ordered!</h2>
+<% current_user.orders.each do |order| %>
+  <div class="order">
+    <%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>
+    <div class='order-body'>
+      <h3><%= order.meal.name %> ($<%= order.meal.price %>)</h3>
+      <p>Chef: <%= order.meal.user.first_name %></p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <li><i class="fa fa-time"> <%= order.status %></i></li>
+    </ul>
+  </div>
+<% end %>
+<h2 class="text-center">These are the meals people are ordering from you!</h2>
+<% Order.where(meal: current_user.meals).each do |order| %>
+  <div class="order">
+    <%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>
+    <div class='order-body'>
+      <h3><%= order.meal.name %> ($<%= order.meal.price %>)</h3>
+      <p>Ordered by: <%= order.user.first_name %></p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <li><i class="fa fa-time"> <%= order.status %></i></li>
+    </ul>
+  </div>
+<% end %>
