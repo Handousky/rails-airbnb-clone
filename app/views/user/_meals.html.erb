@@ -1,0 +1,37 @@
+<h2 class="text-center">This are the meals that you made!</h2>
+<div class="row text-center meals">
+  <% current_user.meals.each do |meal| %>
+    <div class="col-xs-6 col-sm-4 col-md-3 meal-card">
+      <%= link_to '', meal_path(meal), class: 'card-link' %>
+      <div class="meal-content">
+        <div class="meal-name">
+          <h4><%= meal.name %> ($<%= meal.price %>)</h4>
+        </div>
+        <div class="meal-category">
+          <h5><%= meal.category %></h5>
+        </div>
+        <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+     url('<%= cl_image_path meal.photo.path, height: 150, width: 250, crop: :scale if meal.photo? %>')">
+        </div>
+        <div class="meal-control", style="z-index: 1;">
+          <%= link_to "Edit", edit_meal_path(meal), class: 'btn btn-warning btn-sm' %>
+          <%= link_to "Delete", meal_path(meal), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="col-xs-6 col-sm-4 col-md-3 meal-card">
+    <%= link_to '', new_meal_path, class: 'card-link' %>
+    <div class="meal-content">
+      <div class="meal-name">
+        <h4>New meal</h4>
+      </div>
+      <div class="meal-category">
+        <h6>Click here</h6>
+      </div>
+      <div class="meal-img">
+        <i class="fa fa-plus-circle" style="font-size: 70px;"></i>
+      </div>
+    </div>
+  </div>
+</div>

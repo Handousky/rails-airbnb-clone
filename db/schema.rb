@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108185612) do
+ActiveRecord::Schema.define(version: 20171109210609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20171108185612) do
     t.integer  "meal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "time"
+    t.integer  "portions"
     t.index ["meal_id"], name: "index_orders_on_meal_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -60,7 +62,9 @@ ActiveRecord::Schema.define(version: 20171108185612) do
     t.integer  "meal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.index ["meal_id"], name: "index_reviews_on_meal_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,12 +88,16 @@ ActiveRecord::Schema.define(version: 20171108185612) do
     t.string   "facebook_picture_url"
     t.string   "token"
     t.datetime "token_expiry"
+    t.integer  "review_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["review_id"], name: "index_users_on_review_id", using: :btree
   end
 
   add_foreign_key "meals", "users"
   add_foreign_key "orders", "meals"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "meals"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "users", "reviews"
 end

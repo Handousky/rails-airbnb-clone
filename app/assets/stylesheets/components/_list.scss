@@ -1,4 +1,5 @@
 .order {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 20px;
@@ -6,10 +7,20 @@
   transition: all 0.15s ease;
   background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+}
+
+.list-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Body design */
 .order-body {
+  padding-left: 20px;
   flex: 1 1 auto;
 }
 .order-body h3 {
@@ -24,10 +35,16 @@
 }
 
 /* order image */
-.order-image {
-  border-radius: 10px;
-  margin-right: 20px;
-  width: 175px;
+.order-img {
+  background-color: grey;
+  width: 205px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  // border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 /* Upvote design */
@@ -56,24 +73,12 @@
 
 /* Controls design */
 .order-controls {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 0px;
-}
-.order-controls a {
-  padding: 0 20px;
-  font-size: 17px;
-  color: #E6E6E6;
-}
-.order-controls a:hover {
-  color: #D3473C !important
-}
-.order-controls-hidden a {
-  color: transparent;
-  font-size: 15px;
-  transition: all 0.15s ease;
-  border-color: transparent;
+  .green {
+      color: $green;
+    }
+  .red {
+    color: $red;
+  }
 }
 
 /* Hover effects */
