@@ -6,7 +6,6 @@
   flex: 1;
   height: 60%;
   margin: 10px;
-  padding: 20px;
   position: relative;
   background-color: white;
   border-radius: 5px;
@@ -27,27 +26,62 @@
     height: 100%;
   }
 
-  .meal-info{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-  }
 
   .meal-content{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     .meal-img{
       background-color: grey;
-      height: 150px;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       // border-bottom: 1px solid rgba(255,255,255,0.2);
     }
     .meal-head h4{
       margin-top: 0;
+      text-align: left;
+      padding: 0px 20px;
+      margin-bottom: 2px;
+    }
+
+    .meal-info{
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 0px 20px;
+      margin-bottom: 8px;
+    }
+
+    .meal-price p {
+      margin: 0px;
+    }
+
+    .meal-bottom-elements{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0px;
+      border-top: 1px solid rgba(0,0,0,0.2);
+
+      .meal-price{
+        font-size: 16px;
+        font-weight: 700;
+        padding: 0px 20px;
+      }
+
+      .meal-order{
+        padding: 0px 20px;
+
+        .btn{
+          padding: 0px 8px;
+          font-size: 16px;
+
+        }
+      }
     }
   }
 

@@ -1,30 +1,43 @@
-<div class="container text-center meals">
-  <h1>All Our meals</h1>
-  <div class="row">
-    <% @meals.each do |meal| %>
-      <div class="col-xs-6 col-sm-4 col-md-3">
-        <div class="meal-card">
-          <%= link_to '', meal_path(meal), class: 'card-link' %>
-          <div class="meal-content">
-            <div class="meal-head">
-              <h4><%= meal.name %> ($<%= meal.price %>)</h4>
-            </div>
-            <div class="meal-info">
-              <p><%= meal.category %></p>
-              <p>
-                <%meal.avg_rating.times { %><i class='fa fa-star'></i> <% } %>
-                <%(5 - meal.avg_rating).times { %><i class='fa fa-star-o'></i> <% } %>
-              </p>
-            </div>
-            <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path meal.photo.path, height: 150, width: 205, crop: :scale if meal.photo? %>')">
+<div class="meals-container meals">
+  <div class="card-container">
+    <div class="row">
+      <% @meals.each do |meal| %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="meal-card">
+            <%= link_to '', meal_path(meal), class: 'card-link' %>
+            <div class="meal-content">
+
+              <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path meal.photo.path, height: 150, width: 205, crop: :scale if meal.photo? %>')">
+              </div>
+
+              <div class="meal-head">
+                <h4><%= meal.name %></h4>
+              </div>
+              <div class="meal-info">
+                <p><%= meal.category %></p>
+                <p>
+                  <%meal.avg_rating.times { %><i class='fa fa-star'></i> <% } %>
+                  <%(5 - meal.avg_rating).times { %><i class='fa fa-star-o'></i> <% } %>
+                </p>
+              </div>
+              <div class="meal-bottom-elements">
+                <div class="meal-price">
+                  <p>$ <%= meal.price %></p>
+                </div>
+                <div class="meal-order">
+                  <%= link_to '+', meal_path(meal), class: 'btn btn-primary' %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-  <div id="map" style="width: 100%; height: 600px;"></div>
+
+  <div id="map" style="width: 100%; height: calc(100vh - 70px);"></div>
+
 
   <% content_for(:after_js) do %>
     <%= javascript_tag do %>
