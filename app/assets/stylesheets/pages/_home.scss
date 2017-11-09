@@ -8,3 +8,14 @@ body {
   padding-bottom: 60px;   /* Height of the footer */
 }
 
+.welcomeimg {
+  width: 165px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}

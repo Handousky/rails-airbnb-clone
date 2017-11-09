@@ -1,0 +1,43 @@
+.banner2 {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 70px);
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner2 h2 {
+  padding-top: 240px;
+}
+
+.banner2 p {
+  padding-top: 20px;
+}
+
+
+.banner2link {
+  font-size: 71px;
+  text-decoration: none;
+  background-color: #F41E2F;
+  color: #333333;
+  padding: 21px 74px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: solid 1px #20538D;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.banner2link:hover {
+  text-decoration: none;
+  color: #333333;
+}
