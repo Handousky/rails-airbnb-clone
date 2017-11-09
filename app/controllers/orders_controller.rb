@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
+    @order.time += ' - ' + Date.today.strftime('%A, %b %d')
     @order.user = current_user
     @order.meal = Meal.find(params[:meal_id])
     @order.status = "Pending"
