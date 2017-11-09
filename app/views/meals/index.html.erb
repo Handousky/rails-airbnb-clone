@@ -8,11 +8,11 @@
             <div class="meal-content">
 
               <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-           url('<%= cl_image_path meal.photo.path, height: 150, width: 205, crop: :scale if meal.photo? %>')">
+           url('<%= cl_image_path meal.photo.path if meal.photo? %>')">
               </div>
 
               <div class="meal-head">
-                <h4><%= meal.name %></h4>
+                <h5><b><%= meal.name %></b></h5>
               </div>
               <div class="meal-info">
                 <p><%= meal.category %></p>
@@ -25,8 +25,8 @@
                 <div class="meal-price">
                   <p>$ <%= meal.price %></p>
                 </div>
-                <div class="meal-order">
-                  <%= link_to '+', meal_path(meal), class: 'btn btn-primary' %>
+                <div class="meal-order" style="z-index: 1">
+                  <%= link_to 'order', meal_path(meal), class: 'btn btn-primary' %>
                 </div>
               </div>
             </div>
