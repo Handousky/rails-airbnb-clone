@@ -1,0 +1,11 @@
+.meals-container {
+  display: flex;
+  width: 100%;
+}
+
+#map {
+  flex: 0 0 450px;
+  height: 100vh;
+  position: sticky !important;
+  top: 0 !important;
+}
