@@ -41,9 +41,20 @@
 
   <% content_for(:after_js) do %>
     <%= javascript_tag do %>
+
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        positionMarker = handler.addMarkers([
+        { "lat": <%= @results.first %>,
+          "lng": <%= @results.last %>,
+          "picture": {
+            "url": "/assets/oval.png",
+            "width": 32,
+            "height": 32
+          },
+        }
+        ]);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         if (markers.length == 0) {
