@@ -1,4 +1,10 @@
 <div class="banner2" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.4) 0%, rgba(0,36,61,0.4) 50%), url('https://static.pexels.com/photos/361184/asparagus-steak-veal-steak-veal-361184.jpeg');">
-<h3 class="text text-center"> Ready to Eat ?</h3>
-  <p> <%= link_to "SIGN UP", new_user_session_path, class: "banner2link" %> </p>
+
+  <% if user_signed_in? %>
+    <h5 class="text text-center"> It's your turn to start earning some money. You can become the hot new spot in your neighborhood!</h5>
+    <p> <%= link_to "START COOKING", new_meal_path, class: "banner2link" %> </p>
+  <% else %>
+    <h3 class="text text-center"> Explore home cooked food around you.</h3>
+    <p> <%= link_to "SIGN UP", new_user_session_path, class: "banner2link" %> </p>
+  <% end %>
 </div>
