@@ -2,6 +2,7 @@
 
 <% current_user.orders.reverse.first(5).each do |order| %>
   <div class="order">
+    <%= link_to '', meal_path(order.meal), class: 'list-link' %>
     <div class="order-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= cl_image_path order.meal.photo.path, height: 150, width: 205, crop: :scale if order.meal.photo? %>')">
     </div>
