@@ -7,24 +7,24 @@
 
 <% content_for(:sidebar) do %>
   <div id="mySidenav" class="tab">
-    <span class="tablinks" onclick="openCity(event, 'History')" id="defaultOpen">History</span>
+    <span class="tablinks" onclick="openCity(event, 'Orders')" id="defaultOpen">Orders</span>
+    <span class="tablinks" onclick="openCity(event, 'History')">History</span>
     <span class="tablinks" onclick="openCity(event, 'Meals')">Your meals</span>
-    <span class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</span>
   </div>
 <% end %>
 
 <div class="container">
 
-  <div class="dash-view tabcontent" id="History">
+  <div class="dash-view tabcontent" id="Orders">
     <%= render 'orders' %>
+  </div>
+
+  <div class="dash-view tabcontent" id="History">
+    <%= render 'history' %>
   </div>
 
   <div class="dash-view tabcontent" id="Meals">
     <%= render 'meals' %>
-  </div>
-
-  <div class="dash-view tabcontent" id="Reviews">
-    <%= render 'reviews' %>
   </div>
 
 </div>
