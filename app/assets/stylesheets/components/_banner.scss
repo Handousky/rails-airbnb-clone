@@ -9,17 +9,20 @@
   justify-content: center;
 }
 .banner h1 {
-  font-size: 75px;
+  font-size: 85px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(1, 0, 1, 0.5);
   color: #DFBFE5;
+//   -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 95%, rgba(0,0,0,1));
+//   -webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 95%, rgba(0,0,0,1));
 }
+
 .banner p {
-  font-size: 25px;
+  font-size: 29px;
   font-weight: lighter;
   font-style: italic;
   color: #DFBFE5;
-  opacity: 0.8;
+  opacity: 0.9;
   margin-bottom: 30px;
 }
 
@@ -27,7 +30,7 @@
   border-radius: 3px;
   background-color: white;
   color: black;
-  border-color: #E94CD8;
+  border-color: #306FF4;
 }
 
 label {
@@ -39,7 +42,8 @@ label {
 .form-banner {
   background-color: white;
   padding: 8px;
-  border: 0.5px solid #E94CD8;
+  border: 1.5px solid #306FF4;
+  border-radius: 5px;
 }
 
 .form-inline .form-group .address-input {
