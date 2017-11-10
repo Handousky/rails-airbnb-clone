@@ -56,6 +56,7 @@
         }
         ]);
         handler.bounds.extendWith(markers);
+        handler.bounds.extendWith(positionMarker);
         handler.fitMapToBounds();
         if (markers.length == 0) {
           handler.getMap().setZoom(2);
