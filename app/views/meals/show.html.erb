@@ -3,11 +3,10 @@
 <% @order  = @order.nil? ? Order.new : @order %>
 
 <div class="container">
-  <div class="row">
+
+  <div class="row up-division">
     <div class="col-xs-12 col-sm-6 text-center">
-      <% if @meal.photo? %>
-        <%= cl_image_tag @meal.photo.path, width: 550, height: 500, crop: :fit %>
-      <% end %>
+      <div class="meal-image" style="background-image: url('<%= cl_image_path @meal.photo.path if @meal.photo? %>')"></div>
       <p><b>Made by</b> <%= @meal.user.first_name + ' ' + @meal.user.last_name %></p>
     </div>
     <div class="col-xs-12 col-sm-6">
@@ -43,8 +42,13 @@
     </div>
   </div>
 
-  <div class="row up-division">
-    <div class="col-xs-12 col-sm-6">
+  <div class="row down-division">
+    <!-- Showing Reviews -->
+    <% if user_signed_in? && current_user != @meal.user %>
+      <div class="col-xs-12 col-sm-6">
+    <% else %>
+      <div class="col-xs-12">
+    <% end %>
       <h4 class="text-center">Reviews</h4>
       <% @meal.reviews.each do |review| %>
         <div class="review-card">
@@ -57,10 +61,13 @@
         </div>
       <% end %>
     </div>
-    <% if user_signed_in? %>
+
+    <!-- Review form -->
+    <% if user_signed_in? && current_user != @meal.user %>
+
+      <!-- Show review because user is singed in and he/she is not the chef -->
       <div class="col-xs-12 col-sm-4 col-sm-offset-1">
         <h4 class="text-center">Add a review</h4>
-
         <% if @review.errors.any? %>
           <ul>
             <% @review.errors.full_messages.each do |message| %>
@@ -74,12 +81,15 @@
           <%= f.input :rating, collection: 0..5 %>
           <%= f.submit class: "btn btn-primary" %>
         <% end %>
-
       </div>
-    <% else %>
+
+    <% elsif !user_signed_in? %>
+
+      <!-- Show "Login first" message because user is not logged in -->
       <div class="col-xs-12 col-sm-4 col-sm-offset-1">
         <h4 class="text-center">You need to log in to write a review</h4>
       </div>
+
     <% end %>
   </div>
 </div>

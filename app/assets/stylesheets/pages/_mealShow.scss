@@ -3,7 +3,17 @@
   text-align: center;
 }
 
+.meal-image {
+  width: 40vw;
+  height: 300px;
+  background-size: cover !important;
+}
+
 .up-division {
+  margin: 20px 0;
+}
+
+.down-division {
   padding-top: 20px;
   border-top: 1px solid rgba(0,0,0,0.2);
 }
