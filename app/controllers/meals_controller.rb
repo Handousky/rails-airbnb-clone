@@ -20,7 +20,7 @@ class MealsController < ApplicationController
    if params[:search].present?
 
       @meals = Meal.near(params[:search], 10)
-
+      @results = Geocoder.coordinates(params[:search])
       # if params address
       # geocode that address
       # find meals near geocoded address
@@ -52,6 +52,7 @@ class MealsController < ApplicationController
       render :new
     end
   end
+
 
   def destroy
     @meal.destroy
