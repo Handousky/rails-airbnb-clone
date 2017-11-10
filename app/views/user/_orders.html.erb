@@ -19,7 +19,7 @@
         <h5 class="text-center red"><%= order.status %></h5>
       <% else %>
         <h5 class="text-center"><%= order.status %></h5>
-        <ul class="list-inline">
+        <ul class="list-inline" style="z-index: 1">
           <li><%= link_to "Accept", "accept/order/#{order.id}", class: 'btn btn-success btn-sm' %></li>
           <li><%= link_to "Reject", "reject/order/#{order.id}", class: 'btn btn-danger btn-sm' %></li>
         </ul>
