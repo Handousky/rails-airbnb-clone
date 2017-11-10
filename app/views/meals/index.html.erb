@@ -46,6 +46,7 @@
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        <% unless @results.nil? %>
         positionMarker = handler.addMarkers([
         { "lat": <%= @results.first %>,
           "lng": <%= @results.last %>,
@@ -56,8 +57,9 @@
           },
         }
         ]);
-        handler.bounds.extendWith(markers);
         handler.bounds.extendWith(positionMarker);
+        <% end %>
+        handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         if (markers.length == 0) {
           handler.getMap().setZoom(2);
