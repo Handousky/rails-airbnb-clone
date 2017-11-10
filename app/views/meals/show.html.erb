@@ -5,40 +5,42 @@
 <div class="container">
 
   <div class="row up-division">
-    <div class="col-xs-12 col-sm-6 text-center">
-      <div class="meal-image" style="background-image: url('<%= cl_image_path @meal.photo.path if @meal.photo? %>')"></div>
-      <p><b>Made by</b> <%= @meal.user.first_name + ' ' + @meal.user.last_name %></p>
-    </div>
     <div class="col-xs-12 col-sm-6">
-      <div class="row">
-        <div class="col-xs-7">
-          <div class="meal-info">
-            <div class="meal-info">
-              <h2><%= @meal.name %></h2>
-              <p>Category: <%= @meal.category %></p>
-              <p>Address: <%= @meal.address %></p>
-              <div class="meal-description text-justify">
-                <h3>Description</h3>
-                <p><%= @meal.description %></p>
+      <div class="meal-image" style="background-image: url('<%= cl_image_path @meal.photo.path if @meal.photo? %>')"></div>
+      <p class="text-center"><b>Made by</b> <%= @meal.user.first_name + ' ' + @meal.user.last_name %></p>
+      <div class="meal-info">
+        <div class="meal-info">
+          <div class="meal-description text-justify">
+            <h3>Description</h3>
+            <p><%= @meal.description %></p>
+          </div>
+          <p><b>Category:</b> <%= @meal.category %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+      <h2><%= @meal.name %> - $<%= @meal.price %></h2>
+      <% if current_user != @meal.user %>
+        <% if user_signed_in? %>
+          <%= simple_form_for([@meal, @order]) do |f| %>
+            <div class="formy">
+              <div class="formy-item">
+                <%= f.input :time, labe: "Pickup time", as: :select, collection: (24.times.map { |i| "#{i}:00" }), selected: :first %>
+              </div>
+              <div class="formy-item">
+                <%= f.input :portions, input_html: { min: 1, max: 10, step: 1, value: 1} %>
+              </div>
+              <div class="formy-item">
+                <%= f.submit "Order now!", class: "btn btn-success btn-lg" %>
               </div>
             </div>
-          </div>
-        </div>
-        <% if current_user != @meal.user %>
-          <div class="col-xs-5 order-form">
-            <h4>Price: $<%= @meal.price %></h4>
-            <% if user_signed_in? %>
-              <%= simple_form_for([@meal, @order]) do |f| %>
-                <%= f.input :time, labe: "Pickup time", as: :select, collection: (24.times.map { |i| "#{i}:00" }), selected: :first %>
-                <%= f.input :portions, input_html: { min: 1, max: 10, step: 1, value: 1} %>
-                <%= f.submit "Order now!", class: "btn btn-success btn-lg" %>
-              <% end %>
-            <% else %>
-              <%= link_to 'Login to Order',  new_user_session_path, class: 'btn btn-primary btn-lg' %>
-            <% end %>
-          </div>
+          <% end %>
+        <% else %>
+          <%= link_to 'Login to Order',  new_user_session_path, class: 'btn btn-primary btn-lg' %>
         <% end %>
-      </div>
+      <% end %>
+      <p><b>Address:</b> <%= @meal.address %></p>
     </div>
   </div>
 
@@ -50,6 +52,9 @@
       <div class="col-xs-12">
     <% end %>
       <h4 class="text-center">Reviews</h4>
+       <% if @meal.reviews.size == 0 %>
+        <h4 class="text-center"> Be the first to review this Meal!</h4>
+      <% end %>
       <% @meal.reviews.each do |review| %>
         <div class="review-card">
           <p><%= review.comment %></p>
@@ -86,7 +91,11 @@
     <% elsif !user_signed_in? %>
 
       <!-- Show "Login first" message because user is not logged in -->
-      <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+      <% if @meal.reviews.size == 0 %>
+        <div class="col-xs-12">
+      <% else %>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+      <% end %>
         <h4 class="text-center">You need to log in to write a review</h4>
       </div>
 
