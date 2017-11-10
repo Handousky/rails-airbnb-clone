@@ -49,13 +49,14 @@
         { "lat": <%= @results.first %>,
           "lng": <%= @results.last %>,
           "picture": {
-            "url": "/assets/oval.png",
+            "url": "<%= asset_path("oval.png") %>",
             "width": 32,
             "height": 32
           },
         }
         ]);
         handler.bounds.extendWith(markers);
+        handler.bounds.extendWith(positionMarker);
         handler.fitMapToBounds();
         if (markers.length == 0) {
           handler.getMap().setZoom(2);
