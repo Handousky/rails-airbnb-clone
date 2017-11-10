@@ -8,8 +8,7 @@
             <%= link_to '', meal_path(meal), class: 'card-link' %>
             <div class="meal-content">
 
-              <div class="meal-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-           url('<%= cl_image_path meal.photo.path if meal.photo? %>')">
+              <div class="meal-img" style="background-image: url('<%= cl_image_path meal.photo.path if meal.photo? %>')">
               </div>
 
               <div class="meal-head">
