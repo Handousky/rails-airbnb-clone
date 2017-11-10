@@ -8,6 +8,8 @@
     <div class='order-body'>
       <h3><%= order.meal.name %> ($<%= order.meal.price %>)</h3>
       <p>Ordered by: <%= order.user.first_name %></p>
+      <h6><i class="fa fa-clock-o"> <%= order.time %></i></h6>
+      <h6><%= order.portions %> Portion(s)</h6>
     </div>
     <div class="order-controls hidden-sm hidden-xs">
       <% if order.status == "Accepted" %>
