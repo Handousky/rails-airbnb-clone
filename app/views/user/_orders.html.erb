@@ -12,14 +12,14 @@
       <h6><i class="fa fa-clock-o"> <%= order.time %></i></h6>
       <h6><%= order.portions %> Portion(s)</h6>
     </div>
-    <div class="order-controls hidden-sm hidden-xs">
+    <div class="order-controls hidden-sm hidden-xs" style="z-index: 1">
       <% if order.status == "Accepted" %>
         <h5 class="text-center green"><%= order.status %></h5>
       <% elsif order.status == "Rejected" %>
         <h5 class="text-center red"><%= order.status %></h5>
       <% else %>
         <h5 class="text-center"><%= order.status %></h5>
-        <ul class="list-inline" style="z-index: 1">
+        <ul class="list-inline">
           <li><%= link_to "Accept", "accept/order/#{order.id}", class: 'btn btn-success btn-sm' %></li>
           <li><%= link_to "Reject", "reject/order/#{order.id}", class: 'btn btn-danger btn-sm' %></li>
         </ul>
